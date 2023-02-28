@@ -1,14 +1,17 @@
-import numpy as np
-b = []
-a = np.array([3,4,2,7,32])
+from urllib.request import Request, urlopen
 
-print(a)
-print(type(a))
+class AnalyseurWeb:
+    def __check_machine_name(url) -> bool :
+        
 
-b.append(a)
-print(b)
-print(type(b))
-
-c = a.tolist()
-print(c)
-print(type(c))
+    def open_url(self, machine_name):
+        isopen = False
+        isopen = self.__check_machine_name(machine_name)
+        if isopen :
+            sock = urlopen(url)
+            AnalyseurWeb.historique(url)
+            page = sock.read()
+            sock.close()
+            return page.decode("utf-8")
+        else :
+            return ""
