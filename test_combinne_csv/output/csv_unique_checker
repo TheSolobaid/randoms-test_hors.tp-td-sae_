@@ -1,0 +1,25 @@
+import csv
+
+def check_unique_columns(filename):
+    columns = set()
+    dupli = set()
+    with open(filename, 'r', newline='') as csvfile:
+        reader = csv.reader(csvfile)
+        next(reader)  # Skip the header row
+        for row in reader:
+            columns_data = tuple(row[:3])  # Extract the first three columns
+            if columns_data in columns:
+                dupli.add(columns_data)
+            columns.add(columns_data)
+    return dupli
+
+filename = r'C:\Users\theso\Desktop\TEST_import django\fichier_combine.csv'
+are_columns_unique = check_unique_columns(filename)
+ligne = 0
+if are_columns_unique:
+    for data in are_columns_unique:
+        print(data)
+        ligne += 1
+    print(ligne)
+else:
+    print("c'est ok")
